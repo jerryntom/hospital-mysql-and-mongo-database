@@ -1,0 +1,19 @@
+INSERT INTO `appointments` VALUES (1,'55050598000',1,'2024-03-03','Rest, monthly check-up'),(3,'78112233445',3,'2024-05-07','Rest, monthly check-up');
+
+INSERT INTO `departments` VALUES (2,'Cardiology'),(3,'Larynology'),(1,'Orthopedics');
+
+INSERT INTO `doctors` VALUES (1,'Adam','Piston','1979-05-05','444000000','adam@piston.pl','Warszawa','Wolna','11-300','13',1,1),(2,'Piotr','Stonoga','1989-05-05','404556333','piotr@stonoga.pl','Poznań','Szybka','11-400','13W',2,2),(3,'Monika','Nowak','1988-05-07','505556493','monika@wrak.pl','Gdynia','Centralna','22-300','123',3,3);
+
+INSERT INTO `patients` VALUES ('55050598000','Jan','Brzechwa','1955-05-05','M','606556493','jan@brzechwa.pl','Lublin','Zabytkowa','123','22-150'),('78112233445','Rafał','Nowak','1978-11-22','F',' 500600100','peter@nowak.pl','Lublin','Kolorowa','15','22-111');
+
+INSERT INTO `prescriptions` VALUES (1,'2024-03-03','APAA','Every morning',1),(3,'2024-05-07','KAJAK','Every morning',3);
+
+INSERT INTO `specializations` VALUES (2,'cardiologist'),(3,'laryngologist'),(1,'orthopaedist');
+
+INSERT INTO `staff` VALUES (1,'Janina','Pogodna','1999-09-09','606667788','janina@pogodna.pl','Lublin','Modna','12-345','34',1,1),(2,'Jagoda','Nowak','2000-09-09','505667788','jagoda@nowak.pl','Lublin','Powolna','09-345','34C',2,2);
+
+INSERT INTO `staff_roles` VALUES (2,'LIFEGUARD'),(1,'NURSE');
+
+INSERT INTO `surgeries` VALUES (1,'55050598000',1,'2022-03-05','rest'),(3,'78112233445',3,'2022-03-12','rest');
+
+INSERT INTO `tests` VALUES (1,'55050598000',1,'2023-09-09','rest 3 month'),(3,'78112233445',3,'2023-12-09','rest 3 month');

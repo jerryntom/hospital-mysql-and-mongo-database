@@ -1,0 +1,25 @@
+create user "administrator"@"localhost" identified by "password"
+grant all privileges on *.* to "administrator"@"localhost" with grant option;
+
+create user "analityk_danych"@"localhost" identified by "password";
+GRANT CREATE ROUTINE, EXECUTE ON HOSPITAL.* TO "analityk_danych"@"localhost";
+GRANT SELECT ON HOSPITAL.* TO "analityk_danych"@"localhost";
+
+create user "lekarz"@"localhost" identified by "password";
+grant select, insert, update, delete on hospital.appointments to "lekarz"@"localhost";
+grant select, insert, update, delete on hospital.prescriptions to "lekarz"@"localhost";
+grant select, insert, update, delete on hospital.surgeries to "lekarz"@"localhost";
+grant select, insert, update, delete on hospital.tests to "lekarz"@"localhost";
+grant select on hospital.patients to "lekarz"@"localhost";
+
+CREATE USER "recepcjonistka"@"localhost" identified by "password";
+GRANT SELECT, INSERT, UPDATE, DELETE ON HOSPITAL.* TO "recepcjonistka"@"localhost";
+
+CREATE USER "pielegniarka"@"localhost" identified by "password";
+GRANT SELECT (patient_pesel, first_name, last_name, date_of_birth, gender) on hospital.patients to "Pielegniarka"@"localhost";
+GRANT SELECT, INSERT, UPDATE, DELETE ON HOSPITAL.TESTS TO "Pielegniarka"@"localhost";
+
+create user "lekarz_1"@"localhost" identified by "password";
+grant proxy on "lekarz"@"localhost" to "lekarz_1"@"localhost";
+
+

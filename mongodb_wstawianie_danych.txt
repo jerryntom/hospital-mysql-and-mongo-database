@@ -1,0 +1,216 @@
+db.Patients.insertMany([
+  {
+    "_id": "55050598000",
+    "first_name": "Jan",
+    "last_name": "Brzechwa",
+    "date_of_birth": "1955-05-05",
+    "gender": "M",
+    "contact_number": "606556493",
+    "email": "jan@brzechwa.pl",
+    "city": "Lublin",
+    "street": "Zabytkowa",
+    "address_number": "123",
+    "postal_code": "22-150"
+  },
+  {
+    "_id": "78112233445",
+    "first_name": "Rafał",
+    "last_name": "Nowak",
+    "date_of_birth": "1978-11-22",
+    "gender": "F",
+    "contact_number": "500600100",
+    "email": "peter@nowak.pl",
+    "city": "Lublin",
+    "street": "Kolorowa",
+    "address_number": "15",
+    "postal_code": "22-111"
+  }
+])
+
+db.Doctors.insertMany([
+    {
+	"_id": 1,
+        "first_name": "Adam",
+        "last_name": "Piston",
+        "date_of_birth": "1979-05-05",
+        "contact_number": "444000000",
+        "email": "adam@piston.pl",
+        "city": "Warszawa",
+        "street": "Wolna",
+        "postal_code": "11-300",
+        "address_number": "13"
+    },
+    {
+	"_id": 2,
+        "first_name": "Piotr",
+        "last_name": "Stonoga",
+        "date_of_birth": "1989-05-05",
+        "contact_number": "404556333",
+        "email": "piotr@stonoga.pl",
+        "city": "Poznań",
+        "street": "Szybka",
+        "postal_code": "11-400",
+        "address_number": "13W"
+    },
+    {
+	"_id": 3,
+        "first_name": "Monika",
+        "last_name": "Nowak",
+        "date_of_birth": "1988-05-07",
+        "contact_number": "505556493",
+        "email": "monika@nowak.pl",
+        "city": "Gdynia",
+        "street": "Centralna",
+        "postal_code": "22-300",
+        "address_number": "123"
+    }
+])
+
+db.Specializations.insertMany([
+  {
+    "_id": 1,
+    "name": "orthopaedist",
+    "doctors": [1]
+  },
+  {
+    "_id": 2,
+    "name": "cardiologist",
+    "doctors": [2]
+  },
+  {
+    "_id": 3,
+    "name": "laryngologist",
+    "doctors": [3]
+  }
+])
+
+db.Staff.insertMany([
+    {
+      "_id": 1,
+      "first_name": "Janina",
+      "last_name": "Pogodna",
+      "date_of_birth": "1999-09-09",
+      "contact_number": "606667788",
+      "email": "janina@pogodna.pl",
+      "city": "Lublin",
+      "street": "Modna",
+      "postal_code": "12-345",
+      "address_number": "34"
+    },
+    {
+      "_id": 2,
+      "first_name": "Jagoda",
+      "last_name": "Nowak",
+      "date_of_birth": "2000-09-09",
+      "contact_number": "505667788",
+      "email": "jagoda@nowak.pl",
+      "city": "Lublin",
+      "street": "Powolna",
+      "postal_code": "09-345",
+      "address_number": "34C"
+    }
+])
+
+db.Staff_Roles.insertMany([
+    {
+        "_id": 1,
+        "name": "NURSE",
+	"staff": [1]
+    },
+    {
+        "_id": 2,
+        "name": "DOCTOR",
+	"staff": [2]
+    }
+])
+
+db.Departments.insertMany([
+    {
+        "_id": 1,
+        "name": "Orthopedics",
+	"doctors": [1],
+	"staff": [1]
+    },
+    {
+        "_id": 2,
+        "name": "Cardiology",
+	"doctors": [2],
+	"staff": [2]
+    },
+    {
+        "_id": 3,
+        "name": "Larynology",
+	"doctors": [3],
+	"staff": []
+    }
+])
+
+db.Tests.insertMany([
+    {
+        "_id": 1,
+        "patient_id": "55050598000",
+        "doctor_id": 1,
+        "test_date": "2023-09-09",
+        "description": "rest 3 month"
+    },
+    {
+        "_id": 3,
+        "patient_id": "78112233445",
+        "doctor_id": 3,
+        "test_date": "2023-12-09",
+        "description": "rest 3 month"
+    }
+])
+
+db.Appointments.insertMany([
+    {
+        "_id": 1,
+        "patient_id": "55050598000",
+        "doctor_id": 1,
+        "appointment_date": "2024-03-03",
+        "description": "Rest, monthly check-up"
+    },
+    {
+        "_id": 3,
+        "patient_id": "78112233445",
+        "doctor_id": 3,
+        "appointment_date": "2024-05-07",
+        "description": "Rest, monthly check-up"
+    }
+])
+
+db.Surgeries.insertMany([
+    {
+        "_id": 1,
+        "patient_id": "55050598000",
+        "doctor_id": 1,
+        "surgery_date": "2022-03-05",
+        "description": "rest"
+    },
+    {
+        "_id": 3,
+        "patient_id": "78112233445",
+        "doctor_id": 3,
+        "surgery_date": "2022-03-12",
+        "description": "rest"
+    }
+])
+
+db.Prescriptions.insertMany([
+    {
+        "_id": 1,
+        "patient_id": "55050598000",
+        "doctor_id": 1,
+        "prescription_date": "2024-03-03",
+        "medication_name": "APAP",
+        "dosage": "Every morning"
+    },
+    {
+        "_id": 3,
+        "patient_id": "78112233445",
+        "doctor_id": 3,
+        "prescription_date": "2024-05-07",
+        "medication_name": "KAJAK",
+        "dosage": "Every morning"
+    }
+])

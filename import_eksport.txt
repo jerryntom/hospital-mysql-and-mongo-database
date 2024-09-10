@@ -1,0 +1,41 @@
+USE hospital;
+SET FOREIGN_KEY_CHECKS=0;
+TRUNCATE TABLE appointments;
+TRUNCATE TABLE departments;
+TRUNCATE TABLE doctors;
+TRUNCATE TABLE patients;
+TRUNCATE TABLE prescriptions;
+TRUNCATE TABLE specializations;
+TRUNCATE TABLE staff;
+TRUNCATE TABLE staff_roles;
+TRUNCATE TABLE surgeries;
+TRUNCATE TABLE tests;
+SET FOREIGN_KEY_CHECKS=1;
+
+select * from doctors
+into outfile "C:\\ProgramData\\MySQL\\MySQL Server 8.3\\Uploads\\doctors.txt"
+fields terminated by "," optionally enclosed by '"'
+lines terminated by "\n";
+
+set foreign_key_checks = 0;
+truncate table doctors;
+set foreign_key_checks = 1;
+
+load data infile "C:\\ProgramData\\MySQL\\MySQL Server 8.3\\Uploads\\doctors.txt" into table doctors
+fields terminated by ","
+optionally enclosed by '"'
+lines terminated by "\n";
+
+select appointment_id, patient_pesel, doctor_id from appointments
+union all
+select doctor_id, first_name, last_name from doctors
+union all
+select patient_pesel, first_name, last_name from patients
+union all
+select surgery_id, patient_pesel, doctor_id from surgeries
+union all
+select test_id, patient_pesel, doctor_id from tests
+into outfile "C:\\ProgramData\\MySQL\\MySQL Server 8.3\\Uploads\\doctors.txt"
+fields terminated by "," 
+optionally enclosed by '"'
+lines terminated by "\n";

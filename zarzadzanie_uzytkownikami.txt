@@ -1,0 +1,32 @@
+Odebranie wybranych uprawnień jednemu z użytkowników
+revoke delete on hospital.* from "recepcjonistka"@"localhost";
+
+Odebranie całości uprawnień jednemu z użytkowników
+revoke all on hospital.* from "recepcjonistka"@"localhost";
+
+Zmiana nazwy użytkownika
+rename user "recepcjonistka"@"localhost" to "pracownik_recepcji"@"localhost";
+
+Odblokowanie użytkownika
+alter user "pracownik_recepcji"@"localhost" account unlock;
+
+Zablokowanie użytkownika
+alter user "pracownik_recepcji"@"localhost" account lock;
+
+Utworzenie roli
+create role db_user;
+
+Przyznanie roli użytkownikowi
+grant db_user to "pracownik_recepcji"@"localhost";
+
+Usunięcie użytkownika
+drop user "pracownik_recepcji"@"localhost";
+
+Eksport użytkowników oraz uprawnień
+
+mysqlpump -u root -p -P 3307 --exclude-databases=% --users > users.sql
+
+Import użytkowników wraz z uprawnieniami
+
+source users.mysql
+

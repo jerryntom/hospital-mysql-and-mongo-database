@@ -1,0 +1,14 @@
+1.Zaktualizowanie adresu dla pacjentów mieszkających w Lublinie
+db.Patients.updateMany( { "city": "Lublin" }, { $set: { "street": "Nowa ulica", "postal_code": "00-002" } } );
+
+2.Dodanie lekarzy do określonej specjalizacji
+db.Specializations.updateOne( { name: "cardiologist" }, { $set: { doctors: [1, 2, 3] } } );
+
+3.Zmiana daty wizyty dla pacjenta o określonym ID
+db.Appointments.updateOne({ _id: 1}, { $set: { appointment_date: "2024-07-02"} });
+
+4.Usunięcie pacjentów, którzy nie mają żadnych zapisanych wizyt
+db.Patients.deleteMany({ _id: { $nin: db.Appointments.distinct("patient_id") } });
+
+5.Usunięcie oddziałów, które nie mają żadnych pracowników
+db.Departments.deleteMany({ $and: [ { doctors: { $not: { $size: 0 } } }, { staff: { $not: { $size: 0 } } }] });

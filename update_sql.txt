@@ -1,0 +1,3 @@
+1. update doctors set email = "monika@nowak.pl" where doctor_id = 3;
+2. update prescriptions set medication_name = "APAP" where prescription_id = 1;
+3. update staff_roles set name = "DOCTOR" where staff_role_id = 1;

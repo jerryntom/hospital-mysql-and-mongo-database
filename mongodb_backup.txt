@@ -1,0 +1,4 @@
+mongodump --db hospital
+
+mongorestore -d hospitalcopy --dir dump\hospital
+

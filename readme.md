@@ -1,0 +1,1 @@
+Simplified MySQL & Mongo database created to show example implementation for hospital.

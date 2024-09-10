@@ -1,0 +1,10 @@
+1. 
+insert into staff_roles values (3, "Employee");
+delete from staff_roles where name = "Employee";
+2.
+insert into patients values ('55050598020','Jan','Brzewa','1955-05-05','M','606556493','jan@brzechwa.pl','Lublin','Zabytkowa','123','22-150');
+delete from patients where patient_pesel = "55050598020";
+3.
+insert into departments VALUES (4, "test");
+insert into departments (name) values ("XD");
+delete from departments where name in ("test", "XD");

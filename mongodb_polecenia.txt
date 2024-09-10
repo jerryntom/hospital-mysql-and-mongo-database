@@ -1,0 +1,30 @@
+1.Wszyscy pacjenci
+db.Patients.find()
+
+2.Pacjenci z danego miasta
+db.Patients.find({city: "Łódź"})
+
+3.Lekarze o konkretnej specjalizacji z użyciem newRoot
+db.Specializations.aggregate([ { $match: { name: "cardiologist" } }, { $unwind: "$doctors" }, { $lookup: { from: "Doctors", localField: "doctors",
+ foreignField: "_id", as: "doctor_info" } }, { $unwind: "$doctor_info" }, { $replaceRoot: { newRoot: "$doctor_info" } }] )
+
+4.Wizyty danego pacjenta
+db.Appointments.find({patient_id: "55050598000"})
+
+5.Lekarz przypisany do danego spotkania bez użycia newRoot
+db.Appointments.aggregate([ { $match: {_id: 1} }, { $lookup: { from: "Doctors", localField: "doctor_id", foreignField: "_id", as: "doctor"}}])
+
+6.Testy wykonane w określonym przedziale dat
+db.Tests.find({test_date: { $gte: "2023-09-01", $lte: "2023-09-30"}});
+
+7. Zliczanie pacjentów według płci
+db.Patients.aggregate({ $group: { _id: "$gender", count: { $sum: 1 } } });
+
+8. Wyszukiwanie oddziałów oraz liczby przypisanych lekarzy i pracowników
+db.Departments.aggregate([ { $project: { _id: 0, name: 1, numDoctors: { $size: "$doctors" }, numStaff: { $size: "$staff" } } }] );
+
+9. Pacjenci, którzy mieli więcej niż jedną operację
+db.Patients.aggregate([ { $lookup: { from: "Surgeries", localField: "_id", foreignField: "patient_id", as: "surgeries" } }, { $match: { surgeries: { $ne: [] }} }] );
+
+10. Zliczenie liczby lekarzy w każdej specjalizacji i sortowanie specjalizacji według liczby lekarzy malejąco
+db.Specializations.aggregate({ $group: { _id: "$name", doctorCount: { $sum: { $size: "$doctors" } } } });
